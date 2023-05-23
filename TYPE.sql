@@ -32,3 +32,33 @@ SELECT (companies.address).country FROM companies; -- This will give you country
 -- To delete/DEOP TYPE
 
 DROP TYPE sample_type
+
+
+-- ===== ALTER DATA TYPES =====
+-- ============================
+
+CREATE TYPE myaddress AS (
+	city VARCHAR(50), 
+	country VARCHAR(20)
+);
+
+-- Rename a data type
+-- RENAME TYPE name RENAME TO newname
+
+ALTER TYPE myaddress RENAME TO my_address;
+
+-- Change to owner
+-- ALTER TYPE name OWNER TO username
+
+ALTER TYPE my_address OWNER TO heiko;
+
+-- Change the schema
+-- ALTER TYPE name SET SCHEMA schemaname
+
+ALTER TYPE my_address SET SCHEMA test_scm;
+
+
+-- To add a new attribute
+-- ALTER TYPE name ADD ATTRIBUTE attributes
+
+ALTER TYPE test_scm.my_address ADD ATTRIBUTE street_address VARCHAR(150); 
